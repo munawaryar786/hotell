@@ -1,53 +1,46 @@
 import type { Metadata } from "next";
+import { site } from "@/data/site";
+import { PageHero } from "@/components/ui/PageHero";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { HotelImage } from "@/components/ui/HotelImage";
 import { Icon } from "@/components/ui/Icon";
-import { MapEmbed } from "@/components/ui/MapEmbed";
-import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
-import { whatsappUrl } from "@/lib/utils";
 
-export const metadata: Metadata = pageMetadata(
-  "Location",
-  "Student Point Hostel is located at Gulbahar Colony, Academy Road, near Gulberg III, Lahore, near Cavalry Ground, Hajvery University, PAC Gulberg, and 7Up Phattak.",
-  "/location"
-);
+export const metadata: Metadata = pageMetadata("Location | Hotel Ambassador Lahore", "Hotel Ambassador Lahore location, map placeholder, nearby landmarks, airport and railway access, and directions inquiry.", "/location");
 
-const nearbyPlaces = ["Cavalry Ground", "Hajvery University", "PAC Gulberg", "7Up Phattak", "Gulberg III", "Academy Road"];
+const landmarks = ["Lahore business areas", "Cultural destinations", "Shopping districts", "Airport access inquiry", "Railway access inquiry", "Corporate destinations"];
 
 export default function LocationPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Location"
-        title="Easy Access to Nearby Study & City Areas"
-        subtitle="Student Point Hostel is located at Gulbahar Colony, Academy Road, near Gulberg III, Lahore."
-        image="/images/student-point-hostel/student-point-seats-available.jpg"
-        ctaHref="/booking"
-        ctaLabel="Book Your Seat"
-      />
-      <section className="py-16 sm:py-20">
-        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <SectionHeading centered={false} eyebrow="Address" title="Student Point Hostel" subtitle={site.addressSummary} />
-            <div className="grid gap-3">
-              {nearbyPlaces.map((place) => (
-                <p key={place} className="flex items-center gap-2 font-semibold text-primary">
-                  <Icon name="MapPin" className="h-5 w-5 text-accent" />
-                  {place}
-                </p>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={whatsappUrl("Hello Student Point Hostel, please share directions to the hostel.")}>Get Directions</ButtonLink>
-              <ButtonLink href="/booking" variant="outline">Book Your Seat</ButtonLink>
+      <PageHero eyebrow="Location" title="Stay Connected to Lahore" subtitle="A central Lahore hotel location experience with address, map, and directions placeholders ready for verified details." image="/images/ambassador/ambassador-40.jpg" ctaHref={site.mapUrl} ctaLabel="Get Directions" />
+      <AnimatedSection className="bg-light">
+        <Container className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
+            <Icon name="MapPin" className="h-6 w-6 text-accent" />
+            <h2 className="mt-4 text-2xl font-black text-primary">Address</h2>
+            <p className="mt-3 leading-7 text-muted">{site.addressSummary}</p>
+            <ButtonLink href={site.mapUrl} className="mt-6" variant="gold">Get Directions</ButtonLink>
+          </div>
+          <div className="relative min-h-[360px] overflow-hidden rounded-lg bg-primary shadow-lift">
+            <HotelImage src="/images/ambassador/ambassador-26.jpg" alt="Hotel Ambassador Lahore driveway" />
+            <div className="absolute inset-0 flex items-center justify-center bg-primary/55 text-center text-white">
+              <div><p className="text-sm font-black uppercase tracking-[0.16em] text-gold">Google Map Placeholder</p><h2 className="mt-3 text-3xl font-black">Verified map embed goes here</h2></div>
             </div>
           </div>
-          <MapEmbed title="Student Point Hostel Map" label={site.addressSummary} />
         </Container>
-      </section>
+      </AnimatedSection>
+      <AnimatedSection>
+        <Container>
+          <SectionHeading eyebrow="Nearby Access" title="Business, Culture, and Travel Access" subtitle="Replace these placeholders with verified landmark distances before publishing." />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {landmarks.map((item) => <div key={item} className="rounded-lg border border-slate-200 bg-white p-5 shadow-soft"><Icon name="Navigation" className="h-5 w-5 text-accent" /><h2 className="mt-3 font-black text-primary">{item}</h2></div>)}
+          </div>
+        </Container>
+      </AnimatedSection>
     </>
   );
 }

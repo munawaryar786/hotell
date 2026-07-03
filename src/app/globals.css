@@ -17,7 +17,7 @@ html {
 body {
   margin: 0;
   background: #ffffff;
-  color: #0b0b0b;
+  color: #111827;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -34,7 +34,7 @@ textarea {
 }
 
 ::selection {
-  background: rgba(11, 78, 162, 0.18);
+  background: rgba(212, 175, 55, 0.26);
 }
 
 .focus-ring {
@@ -46,7 +46,7 @@ textarea {
 }
 
 .nav-link::after {
-  background: #0b4ea2;
+  background: #d4af37;
   bottom: -7px;
   content: "";
   height: 2px;
@@ -56,6 +56,26 @@ textarea {
   transform-origin: left;
   transition: transform 180ms ease;
   width: 100%;
+}
+
+.gold-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-shine::before {
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  content: "";
+  inset: 0 auto 0 -120%;
+  position: absolute;
+  transform: skewX(-18deg);
+  transition: left 520ms ease;
+  width: 55%;
+}
+
+.gold-shine:hover::before,
+.gold-shine:focus-visible::before {
+  left: 130%;
 }
 
 .nav-link:hover::after,

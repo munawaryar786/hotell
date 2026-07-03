@@ -1,67 +1,43 @@
 import type { Metadata } from "next";
-import { amenities } from "@/data/amenities";
+import { facilities } from "@/data/facilities";
+import { PageHero } from "@/components/ui/PageHero";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HotelImage } from "@/components/ui/HotelImage";
 import { Icon } from "@/components/ui/Icon";
-import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata(
-  "Facilities",
-  "Facilities at Student Point Hostel Lahore including 24-hours security cameras, neat and clean rooms, high-speed internet, parking garage, and electric geyser facility.",
-  "/facilities"
-);
+export const metadata: Metadata = pageMetadata("Facilities | Hotel Ambassador Lahore", "Guest comfort, business services, dining services, event services, family services, parking, and access at Hotel Ambassador Lahore.", "/facilities");
 
 export default function FacilitiesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Facilities"
-        title="Facilities at Student Point Hostel Lahore"
-        subtitle="Essential hostel facilities for comfort, security, study focus, internet access, parking support, and daily student living."
-        image="/images/kings/corridor.jpeg"
-        ctaHref="/booking"
-        ctaLabel="Book Your Seat"
-      />
-      <section className="py-16 sm:py-20">
+      <PageHero eyebrow="Facilities" title="Hotel Facilities for Comfort, Business, and Events" subtitle="Facilities are presented with availability-aware wording. Please confirm specific services directly with the hotel." image="/images/ambassador/ambassador-27.jpg" ctaHref="/booking" ctaLabel="Book Your Stay" />
+      <AnimatedSection className="bg-light">
         <Container>
-          <SectionHeading title="Facilities We Provide" subtitle="A boys hostel should make daily life easier, safer, and more focused. These are the key Student Point Hostel facilities." />
+          <SectionHeading eyebrow="Services" title="Guest Facilities" subtitle="Availability may vary. Please confirm directly with the hotel." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {amenities.map((amenity) => (
-              <article key={amenity.title} className="group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <HotelImage src={amenity.image} alt={`${amenity.title} at Student Point Hostel`} className="transition duration-500 group-hover:scale-105" />
-                  <div className="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
-                    <Icon name={amenity.icon} className="h-5 w-5" />
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h2 className="font-black text-primary">{amenity.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-muted">{amenity.note}</p>
-                </div>
+            {facilities.map((facility) => (
+              <article key={facility.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-soft">
+                <Icon name={facility.icon} className="h-6 w-6 text-accent" />
+                <h2 className="mt-4 font-black text-primary">{facility.title}</h2>
+                <p className="mt-2 text-sm font-bold text-primary/70">{facility.group}</p>
+                <p className="mt-2 text-sm leading-6 text-muted">{facility.note}</p>
               </article>
             ))}
           </div>
-        </Container>
-      </section>
-      <section className="bg-light py-16 sm:py-20">
-        <Container className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              centered={false}
-              eyebrow="Study-Friendly"
-              title="Fully Relaxed Environment Perfect for Study"
-              subtitle="The hostel is positioned around practical student living, with peaceful surroundings, clean spaces, and easy inquiry support for students and parents."
-            />
-            <ButtonLink href="/booking">Submit Seat Inquiry</ButtonLink>
-          </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lift">
-            <HotelImage src="/images/kings/room-study.jpeg" alt="Student Point Hostel study-friendly room" />
+          <div className="mt-10 grid items-center gap-8 rounded-lg bg-white p-6 shadow-soft lg:grid-cols-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg"><HotelImage src="/images/ambassador/ambassador-02.jpg" alt="Hotel Ambassador Lahore pool facility" /></div>
+            <div>
+              <h2 className="text-2xl font-black text-primary">Guest Comfort, Parking, Dining, and Access</h2>
+              <p className="mt-4 leading-7 text-muted">Use the contact form to confirm facility availability for your travel dates, room category, meeting, or event package.</p>
+              <ButtonLink href="/contact" className="mt-6" variant="gold">Ask About Facilities</ButtonLink>
+            </div>
           </div>
         </Container>
-      </section>
+      </AnimatedSection>
     </>
   );
 }

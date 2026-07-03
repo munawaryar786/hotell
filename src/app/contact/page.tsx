@@ -1,75 +1,52 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import { site } from "@/data/site";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { PageHero } from "@/components/ui/PageHero";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
-import { MapEmbed } from "@/components/ui/MapEmbed";
-import { PageHero } from "@/components/ui/PageHero";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { site } from "@/data/site";
+import { mailUrl, telUrl, whatsappUrl } from "@/lib/utils";
 import { pageMetadata } from "@/lib/seo";
-import { telUrl, whatsappUrl } from "@/lib/utils";
 
-export const metadata: Metadata = pageMetadata(
-  "Contact Student Point Hostel Lahore",
-  "Contact Student Point Hostel for boys hostel inquiries, WhatsApp, call, booking, and location information in Lahore.",
-  "/contact"
-);
+export const metadata: Metadata = pageMetadata("Contact Hotel Ambassador Lahore", "Contact Hotel Ambassador Lahore for reservations, room booking inquiries, event inquiries, WhatsApp, call, address, and map placeholder.", "/contact");
 
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Contact"
-        title="Contact Student Point Hostel"
-        subtitle="Call, WhatsApp, or send a message for seat availability, facilities, visit timing, and location details."
-        image="/images/student-point-hostel/student-point-seats-available.jpg"
-      />
-      <section className="py-16 sm:py-20">
-        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="grid gap-5">
-            {[
-              { title: "Call Now", value: site.phone, href: telUrl(), icon: "Phone" },
-              { title: "WhatsApp Inquiry", value: "Send a quick seat inquiry", href: whatsappUrl("Hello Student Point Hostel, I want to contact the team."), icon: "MessageCircle" },
-              { title: "Get Directions", value: site.addressSummary, href: "/location", icon: "MapPin" },
-              { title: "Book Your Seat", value: "Submit hostel seat inquiry", href: "/booking", icon: "CalendarCheck" }
-            ].map((item) => (
-              <ButtonCard key={item.title} {...item} />
-            ))}
+      <PageHero eyebrow="Contact" title="Contact Hotel Ambassador Lahore" subtitle="Reach reservations, submit a room inquiry, or request banquet and event support." image="/images/ambassador/ambassador-28.jpg" />
+      <AnimatedSection className="bg-light">
+        <Container className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="grid gap-4">
+            <ContactCard icon="Phone" title="Reservations" text={site.phone} href={telUrl()} />
+            <ContactCard icon="MessageCircle" title="WhatsApp" text="Room and event inquiries" href={whatsappUrl("Hello Hotel Ambassador Lahore, I want to inquire about room availability.")} />
+            <ContactCard icon="Mail" title="Email" text={site.email} href={mailUrl()} />
+            <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-soft">
+              <Icon name="MapPin" className="h-5 w-5 text-accent" />
+              <h2 className="mt-3 font-black text-primary">Address</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">{site.addressSummary}</p>
+            </div>
           </div>
           <ContactForm />
         </Container>
-      </section>
-      <section className="bg-light py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Address" title="Student Point Hostel Location" subtitle={site.addressSummary} />
-          <MapEmbed title="Student Point Hostel Map" label={site.addressSummary} />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Container className="text-center">
+          <h2 className="text-3xl font-black text-primary">Need Event Support?</h2>
+          <p className="mx-auto mt-3 max-w-2xl leading-7 text-muted">Send a banquet, wedding, or meeting inquiry and the hotel team can confirm space, menus, dates, and coordination details.</p>
+          <div className="mt-6 flex justify-center gap-3"><ButtonLink href="/banquets-events" variant="gold">Event Inquiry</ButtonLink><ButtonLink href="/booking" variant="outline">Room Booking</ButtonLink></div>
         </Container>
-      </section>
+      </AnimatedSection>
     </>
   );
 }
 
-function ButtonCard({ title, value, href, icon }: { title: string; value: string; href: string; icon: string }) {
-  const content = (
-    <>
-      <Icon name={icon} className="h-7 w-7 text-accent" />
-      <h2 className="mt-4 text-xl font-black text-primary">{title}</h2>
-      <p className="mt-2 text-muted">{value}</p>
-    </>
-  );
-
-  if (href.startsWith("/")) {
-    return (
-      <Link href={href} className="focus-ring rounded-lg border border-slate-200 bg-white p-6 text-left shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
-        {content}
-      </Link>
-    );
-  }
-
+function ContactCard({ icon, title, text, href }: { icon: string; title: string; text: string; href: string }) {
   return (
-    <a href={href} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
-      {content}
+    <a href={href} className="focus-ring rounded-lg border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-1 hover:border-accent/70">
+      <Icon name={icon} className="h-5 w-5 text-accent" />
+      <h2 className="mt-3 font-black text-primary">{title}</h2>
+      <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
     </a>
   );
 }

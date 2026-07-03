@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { rooms } from "@/data/rooms";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
@@ -15,14 +16,24 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
     const form = event.currentTarget;
     const data = new FormData(form);
     const nextErrors: Errors = {};
-    const required = compact
-      ? ["fullName", "phone", "moveIn", "roomPreference", "residentType"]
-      : ["fullName", "phone", "moveIn", "roomPreference", "residentType", "message"];
+    const required = compact ? ["checkIn", "checkOut", "adults", "roomType"] : ["fullName", "phone", "email", "checkIn", "checkOut", "adults", "roomType", "rooms"];
 
     required.forEach((field) => {
       if (!String(data.get(field) || "").trim()) nextErrors[field] = "This field is required.";
     });
-    if (String(data.get("phone") || "").trim().length < 7) nextErrors.phone = "Enter a valid phone number.";
+
+    const phone = String(data.get("phone") || "").trim();
+    if (!compact && phone.length < 7) nextErrors.phone = "Enter a valid phone number.";
+
+    const adults = Number(data.get("adults") || 0);
+    if (adults < 1) nextErrors.adults = "Adults must be at least 1.";
+
+    const checkIn = String(data.get("checkIn") || "");
+    const checkOut = String(data.get("checkOut") || "");
+    if (checkIn && checkOut && new Date(checkOut) <= new Date(checkIn)) {
+      nextErrors.checkOut = "Check-out date must be after check-in.";
+    }
+
     if (!compact && !data.get("consent")) nextErrors.consent = "Please agree to be contacted about your inquiry.";
 
     setErrors(nextErrors);
@@ -35,89 +46,69 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <form onSubmit={submit} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
+    <form onSubmit={submit} className="rounded-lg border border-slate-200 bg-white p-6 shadow-lift">
       <div className="mb-5 flex items-center gap-3">
         <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-gold">
           <Icon name="CalendarCheck" className="h-5 w-5" />
         </span>
         <div>
-          <h2 className="text-xl font-black text-primary">{compact ? "Quick Seat Inquiry" : "Book Your Seat at Student Point Hostel"}</h2>
-          <p className="text-sm text-muted">Submit a hostel seat inquiry and the team can contact you soon.</p>
+          <h2 className="text-xl font-black text-primary">{compact ? "Check Availability" : "Room Booking Inquiry"}</h2>
+          <p className="text-sm text-muted">Submit your inquiry and the reservation team can contact you soon.</p>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Full Name" name="fullName" error={errors.fullName} />
-        <Field label="Phone Number" name="phone" type="tel" error={errors.phone} />
-        {!compact ? <Field label="WhatsApp Number optional" name="whatsapp" type="tel" /> : null}
-        <Field label="Move-in Date" name="moveIn" type="date" error={errors.moveIn} />
-        <Select label="Room Preference" name="roomPreference" error={errors.roomPreference}>
-          <option value="">Select preference</option>
-          <option>Available Hostel Seats</option>
-          <option>Shared Room</option>
-          <option>Comfortable Student Room</option>
-          <option>Any Available Option</option>
-        </Select>
-        <Select label={compact ? "Student / Professional" : "Student / Working Professional"} name="residentType" error={errors.residentType}>
-          <option value="">Select type</option>
-          <option>Student</option>
-          <option>Working Professional</option>
-          <option>Parent / Guardian Inquiring</option>
-        </Select>
         {!compact ? (
           <>
-            <Field label="Nearby Institute / University optional" name="institute" />
-            <Select label="Duration of stay optional" name="duration">
-              <option value="">Select duration</option>
-              <option>1 month</option>
-              <option>3 months</option>
-              <option>6 months</option>
-              <option>Long term</option>
-            </Select>
+            <Field label="Full Name" name="fullName" error={errors.fullName} />
+            <Field label="Phone Number" name="phone" type="tel" error={errors.phone} />
+            <Field label="Email Address" name="email" type="email" error={errors.email} />
           </>
         ) : null}
-        <div className="md:col-span-2">
-          <label className="text-sm font-bold text-primary" htmlFor="message">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={compact ? 3 : 5}
-            className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm"
-            placeholder="Tell us your room preference, move-in needs, and any nearby institute."
-          />
-          {errors.message ? <p className="mt-1 text-xs font-semibold text-accent">{errors.message}</p> : null}
-        </div>
+        <Field label="Check-in Date" name="checkIn" type="date" error={errors.checkIn} />
+        <Field label="Check-out Date" name="checkOut" type="date" error={errors.checkOut} />
+        <Field label="Adults" name="adults" type="number" min="1" defaultValue="1" error={errors.adults} />
+        <Field label="Children" name="children" type="number" min="0" defaultValue="0" />
+        <Select label="Room Type" name="roomType" error={errors.roomType}>
+          <option value="">Select room type</option>
+          {rooms.map((room) => (
+            <option key={room.slug}>{room.title}</option>
+          ))}
+        </Select>
+        {!compact ? <Field label="Number of Rooms" name="rooms" type="number" min="1" defaultValue="1" error={errors.rooms} /> : null}
+        {!compact ? (
+          <div className="md:col-span-2">
+            <label className="text-sm font-bold text-primary" htmlFor="request">Special Request</label>
+            <textarea id="request" name="request" rows={5} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" placeholder="Share room preferences, arrival details, family needs, or corporate booking notes." />
+          </div>
+        ) : null}
         {!compact ? (
           <label className="flex gap-3 text-sm text-muted md:col-span-2">
             <input name="consent" type="checkbox" className="mt-1 h-4 w-4 accent-accent" />
-            I agree to be contacted by Student Point Hostel about this inquiry.
+            I agree to be contacted by Hotel Ambassador Lahore about this inquiry.
           </label>
         ) : null}
-        {errors.consent ? <p className="text-xs font-semibold text-accent md:col-span-2">{errors.consent}</p> : null}
+        {errors.consent ? <p className="text-xs font-semibold text-red-700 md:col-span-2">{errors.consent}</p> : null}
       </div>
 
       {success ? (
         <div className="mt-5 rounded-md border border-green-200 bg-green-50 p-4 text-sm font-semibold text-green-700">
-          Thank you! Your hostel seat inquiry has been received. Our team will contact you soon.
+          Thank you! Your booking inquiry has been received. Our reservation team will contact you soon.
         </div>
       ) : null}
-      <Button type="submit" className="mt-6 w-full md:w-auto">
-        Submit Inquiry
+      <Button type="submit" className="mt-6 w-full md:w-auto" variant="gold">
+        Submit Booking Inquiry
       </Button>
     </form>
   );
 }
 
-function Field({ label, name, type = "text", error }: { label: string; name: string; type?: string; error?: string }) {
+function Field({ label, name, type = "text", error, ...props }: { label: string; name: string; type?: string; error?: string; min?: string; defaultValue?: string }) {
   return (
     <div>
-      <label className="text-sm font-bold text-primary" htmlFor={name}>
-        {label}
-      </label>
-      <input id={name} name={name} type={type} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
-      {error ? <p className="mt-1 text-xs font-semibold text-accent">{error}</p> : null}
+      <label className="text-sm font-bold text-primary" htmlFor={name}>{label}</label>
+      <input id={name} name={name} type={type} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" {...props} />
+      {error ? <p className="mt-1 text-xs font-semibold text-red-700">{error}</p> : null}
     </div>
   );
 }
@@ -125,13 +116,11 @@ function Field({ label, name, type = "text", error }: { label: string; name: str
 function Select({ label, name, error, children }: { label: string; name: string; error?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="text-sm font-bold text-primary" htmlFor={name}>
-        {label}
-      </label>
+      <label className="text-sm font-bold text-primary" htmlFor={name}>{label}</label>
       <select id={name} name={name} className="focus-ring mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm">
         {children}
       </select>
-      {error ? <p className="mt-1 text-xs font-semibold text-accent">{error}</p> : null}
+      {error ? <p className="mt-1 text-xs font-semibold text-red-700">{error}</p> : null}
     </div>
   );
 }

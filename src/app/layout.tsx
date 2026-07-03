@@ -3,18 +3,18 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileBottomCTA } from "@/components/layout/MobileBottomCTA";
-import { localBusinessJsonLd, pageMetadata } from "@/lib/seo";
+import { hotelJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
-  "Student Point Hostel",
-  "Student Point Hostel is a boys hostel and student accommodation option in Lahore near Gulberg III and Academy Road."
+  "Hotel Ambassador Lahore",
+  "Hotel Ambassador Lahore is a premium hotel website demo for rooms, dining, events, meetings, family stays, and business travel in Lahore."
 );
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelJsonLd()) }} />
         <Header />
         <main>{children}</main>
         <Footer />

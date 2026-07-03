@@ -1,27 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { telUrl, whatsappUrl } from "@/lib/utils";
 
 export function MobileBottomCTA() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-12px_30px_rgba(0,0,0,0.10)] backdrop-blur lg:hidden">
-      <div className="mx-auto grid max-w-md grid-cols-3 gap-2">
-        <a href={telUrl()} className="focus-ring flex min-h-12 flex-col items-center justify-center rounded-md bg-primary text-xs font-bold text-white">
-          <Icon name="Phone" className="mb-1 h-4 w-4" />
-          Call
-        </a>
-        <a
-          href={whatsappUrl("Hello Student Point Hostel, I want to inquire about seat availability.")}
-          className="focus-ring flex min-h-12 flex-col items-center justify-center rounded-md bg-[#128C7E] text-xs font-bold text-white"
-        >
-          <Icon name="MessageCircle" className="mb-1 h-4 w-4" />
-          WhatsApp
-        </a>
-        <Link href="/booking" className="focus-ring flex min-h-12 flex-col items-center justify-center rounded-md bg-accent text-xs font-bold text-white">
-          <Icon name="CalendarCheck" className="mb-1 h-4 w-4" />
-          Book Seat
-        </Link>
-      </div>
-    </div>
+    <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-slate-200 bg-white/96 shadow-lift backdrop-blur lg:hidden" aria-label="Mobile quick actions">
+      <a href={telUrl()} className="focus-ring flex min-h-16 flex-col items-center justify-center gap-1 text-xs font-black text-primary">
+        <Icon name="Phone" className="h-5 w-5 text-accent" />
+        Call
+      </a>
+      <a href={whatsappUrl("Hello Hotel Ambassador Lahore, I want to inquire about room availability.")} className="focus-ring flex min-h-16 flex-col items-center justify-center gap-1 text-xs font-black text-primary">
+        <Icon name="MessageCircle" className="h-5 w-5 text-accent" />
+        WhatsApp
+      </a>
+      <Link href="/booking" className="focus-ring flex min-h-16 flex-col items-center justify-center gap-1 bg-primary text-xs font-black text-white">
+        <Icon name="CalendarCheck" className="h-5 w-5 text-gold" />
+        Book
+      </Link>
+    </nav>
   );
 }

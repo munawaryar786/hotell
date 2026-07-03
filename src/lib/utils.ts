@@ -11,3 +11,7 @@ export function whatsappUrl(message: string) {
 export function telUrl(phone = site.phone) {
   return `tel:${phone.replace(/[^\d+]/g, "")}`;
 }
+
+export function mailUrl(subject = "Hotel Ambassador Lahore Inquiry") {
+  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+}

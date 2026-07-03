@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 
-export function ContactForm() {
+export function ContactForm({ subject = "General Inquiry" }: { subject?: string }) {
   const [sent, setSent] = useState(false);
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -14,44 +14,27 @@ export function ContactForm() {
 
   return (
     <form onSubmit={submit} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
-      <h2 className="text-2xl font-black text-primary">Send a Message</h2>
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         <Field label="Full Name" name="name" />
         <Field label="Phone Number" name="phone" type="tel" />
-        <Field label="WhatsApp Number optional" name="whatsapp" type="tel" required={false} />
-        <div>
-          <label className="text-sm font-bold text-primary" htmlFor="inquiryType">
-            Inquiry Type
-          </label>
-          <select id="inquiryType" name="inquiryType" className="focus-ring mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm">
-            <option>Seat Availability</option>
-            <option>Facilities</option>
-            <option>Location Visit</option>
-            <option>Parent Inquiry</option>
-          </select>
-        </div>
+        <Field label="Email Address" name="email" type="email" />
+        <Field label="Subject" name="subject" defaultValue={subject} />
         <div className="md:col-span-2">
-          <label className="text-sm font-bold text-primary" htmlFor="message">
-            Message
-          </label>
-          <textarea id="message" name="message" rows={5} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
+          <label htmlFor="message" className="text-sm font-bold text-primary">Message</label>
+          <textarea id="message" name="message" required rows={5} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" placeholder="Tell us how the reservation or event team can help." />
         </div>
       </div>
-      {sent ? <p className="mt-4 rounded-md bg-green-50 p-4 text-sm font-semibold text-green-700">Thank you! Your message has been received.</p> : null}
-      <Button type="submit" className="mt-6">
-        Send message
-      </Button>
+      {sent ? <p className="mt-5 rounded-md border border-green-200 bg-green-50 p-4 text-sm font-semibold text-green-700">Thank you! Your inquiry has been received.</p> : null}
+      <Button type="submit" className="mt-6" variant="gold">Send Inquiry</Button>
     </form>
   );
 }
 
-function Field({ label, name, type = "text", required = true }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({ label, name, type = "text", defaultValue }: { label: string; name: string; type?: string; defaultValue?: string }) {
   return (
     <div>
-      <label className="text-sm font-bold text-primary" htmlFor={name}>
-        {label}
-      </label>
-      <input id={name} name={name} type={type} required={required} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
+      <label htmlFor={name} className="text-sm font-bold text-primary">{label}</label>
+      <input id={name} name={name} type={type} required defaultValue={defaultValue} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
     </div>
   );
 }

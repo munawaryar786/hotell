@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { branches } from "@/data/branches";
+import { facilities } from "@/data/facilities";
 import { site } from "@/data/site";
 
 export function pageMetadata(title: string, description: string, path = "/"): Metadata {
-  const fullTitle = title === site.name ? `${site.name} | Boys Hostel in Lahore` : `${title} | ${site.name}`;
+  const fullTitle = title === site.name ? "Hotel Ambassador Lahore | Premium Hotel in Lahore" : title.includes(site.name) ? title : `${title} | ${site.name}`;
   const url = `${site.url}${path}`;
 
   return {
@@ -24,39 +24,25 @@ export function pageMetadata(title: string, description: string, path = "/"): Me
   };
 }
 
-export function localBusinessJsonLd() {
+export function hotelJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
+    "@type": "Hotel",
     name: site.name,
-    description: "Boys hostel and student accommodation in Lahore near Gulberg III and Academy Road.",
+    alternateName: site.alternateName,
+    description: "Premium hotel in Lahore for rooms, dining, meetings, banquets, business travel, family stays, and central city hospitality.",
     url: site.url,
     telephone: site.phone,
     image: `${site.url}${site.heroImage}`,
     priceRange: "Contact for current rates",
+    checkinTime: site.checkIn,
+    checkoutTime: site.checkOut,
     address: {
       "@type": "PostalAddress",
+      streetAddress: site.address,
       addressLocality: "Lahore",
       addressCountry: "PK"
     },
-    department: branches.map((branch) => ({
-      "@type": "LodgingBusiness",
-      name: branch.name,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: branch.address,
-        addressLocality: "Lahore",
-        addressCountry: "PK"
-      },
-      image: `${site.url}${branch.image}`
-    })),
-    amenityFeature: [
-      "24-hours security cameras",
-      "Neat and clean rooms",
-      "High-speed internet",
-      "Parking garage",
-      "Electric geyser facility",
-      "Study-friendly environment"
-    ].map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true }))
+    amenityFeature: facilities.map((facility) => ({ "@type": "LocationFeatureSpecification", name: facility.title, value: true }))
   };
 }

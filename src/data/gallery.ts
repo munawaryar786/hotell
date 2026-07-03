@@ -1,28 +1,68 @@
-export type GalleryImage = {
+export type GalleryCategory = "Exterior" | "Lobby" | "Reception" | "Rooms" | "Suites" | "Bathrooms" | "Dining" | "Banquets" | "Meetings" | "Facilities" | "Corridors" | "Parking";
+
+export type GalleryItem = {
   src: string;
+  alt: string;
   title: string;
-  category: string[];
-  branch: "Student Point Hostel";
+  category: GalleryCategory;
+  featured: boolean;
+  pageUsage?: string;
 };
 
-export const galleryImages: GalleryImage[] = [
-  { src: "/images/kings/exterior-corner.jpeg", title: "Hostel exterior view", category: ["Exterior", "Location"], branch: "Student Point Hostel" },
-  { src: "/images/kings/exterior-side.jpeg", title: "Hostel side exterior", category: ["Exterior", "Location"], branch: "Student Point Hostel" },
-  { src: "/images/kings/exterior-wide.jpeg", title: "Hostel wide exterior", category: ["Exterior", "Location"], branch: "Student Point Hostel" },
-  { src: "/images/kings/entrance.jpeg", title: "Hostel entrance area", category: ["Exterior", "Location"], branch: "Student Point Hostel" },
-  { src: "/images/kings/corridor.jpeg", title: "Clean corridor", category: ["Facilities"], branch: "Student Point Hostel" },
-  { src: "/images/kings/stairs.jpeg", title: "Interior stairs", category: ["Facilities"], branch: "Student Point Hostel" },
-  { src: "/images/kings/room-twin.jpeg", title: "Shared student room", category: ["Rooms / Accommodation"], branch: "Student Point Hostel" },
-  { src: "/images/kings/room-twin-2.jpeg", title: "Comfortable student room", category: ["Rooms / Accommodation"], branch: "Student Point Hostel" },
-  { src: "/images/kings/room-study.jpeg", title: "Room with study desk", category: ["Rooms / Accommodation", "Facilities"], branch: "Student Point Hostel" },
-  { src: "/images/kings/room-sharing.jpeg", title: "Shared room option", category: ["Rooms / Accommodation"], branch: "Student Point Hostel" },
-  { src: "/images/kings/bathroom.jpeg", title: "Bathroom facility", category: ["Facilities"], branch: "Student Point Hostel" },
-  { src: "/images/kings/geyser.jpeg", title: "Electric geyser facility", category: ["Facilities"], branch: "Student Point Hostel" },
-  { src: "/images/student-point-hostel/student-point-logo.jpg", title: "Student Point Hostel Logo", category: ["Branding"], branch: "Student Point Hostel" },
-  { src: "/images/student-point-hostel/student-point-poster-main.jpg", title: "Boys hostel facilities poster", category: ["Hostel Posters", "Facilities", "Rooms / Accommodation"], branch: "Student Point Hostel" },
-  { src: "/images/student-point-hostel/boys-hostel-poster.jpg", title: "Student Point Hostel contact poster", category: ["Hostel Posters", "Facilities", "Location"], branch: "Student Point Hostel" },
-  { src: "/images/student-point-hostel/student-point-seats-available.jpg", title: "Seats available notice", category: ["Hostel Posters", "Branding", "Location"], branch: "Student Point Hostel" },
-  { src: "/images/student-point-hostel/student-point-facilities.jpg", title: "Facilities and seat availability poster", category: ["Facilities", "Rooms / Accommodation", "Hostel Posters"], branch: "Student Point Hostel" }
+const item = (n: number, title: string, category: GalleryCategory, featured = false, pageUsage?: string): GalleryItem => ({
+  src: `/images/ambassador/ambassador-${String(n).padStart(2, "0")}.jpg`,
+  alt: `${title} at Hotel Ambassador Lahore`,
+  title,
+  category,
+  featured,
+  pageUsage
+});
+
+export const galleryItems: GalleryItem[] = [
+  item(3, "Hotel Exterior at Dusk", "Exterior", true, "hero"),
+  item(40, "Main Entrance", "Exterior", true, "location"),
+  item(34, "Night Exterior", "Exterior", true, "hero"),
+  item(28, "Reception Desk", "Reception", true, "about"),
+  item(35, "Styled Lounge", "Lobby", true, "about"),
+  item(39, "Lounge Seating", "Lobby", true),
+  item(33, "Guest Floor Lobby", "Lobby"),
+  item(30, "Guest Corridor", "Corridors", true),
+  item(32, "Deluxe King Room", "Rooms", true, "rooms"),
+  item(37, "Twin Room", "Rooms", true, "rooms"),
+  item(38, "Premium Twin Room", "Rooms", true, "rooms"),
+  item(41, "Executive Twin Room", "Rooms", true, "rooms"),
+  item(46, "Warm Executive Room", "Rooms", true),
+  item(47, "Classic Room", "Rooms"),
+  item(48, "Standard Room", "Rooms"),
+  item(52, "Suite Room", "Suites", true, "rooms"),
+  item(36, "Suite Lounge", "Suites", true),
+  item(43, "Private Sitting Area", "Suites"),
+  item(44, "Suite Bedroom", "Suites"),
+  item(45, "Suite Living Area", "Suites"),
+  item(24, "Bathroom Detail", "Bathrooms", false, "facilities"),
+  item(51, "Restaurant Seating", "Dining", true, "dining"),
+  item(8, "Buffet Dessert Display", "Dining", true, "dining"),
+  item(13, "Buffet Presentation", "Dining", true, "dining"),
+  item(23, "Breakfast Tray", "Dining"),
+  item(10, "Chef Presentation", "Dining"),
+  item(11, "Culinary Team", "Dining"),
+  item(25, "Event Dining Setup", "Banquets", true, "events"),
+  item(21, "Conference Seating", "Meetings", true, "meetings"),
+  item(19, "Presentation Event", "Meetings", true),
+  item(12, "Banquet Buffet Line", "Banquets"),
+  item(2, "Swimming Pool", "Facilities", true, "facilities"),
+  item(27, "Pool Aerial View", "Facilities", true),
+  item(50, "Pool Deck", "Facilities"),
+  item(22, "Outdoor Seating", "Facilities"),
+  item(26, "Hotel Driveway", "Parking", true, "location"),
+  item(49, "Historic Pool View", "Facilities"),
+  item(6, "Ambassador Building", "Exterior"),
+  item(7, "Illuminated Signage", "Exterior"),
+  item(20, "Hotel Entrance Canopy", "Exterior"),
+  item(5, "Interior Corridor", "Corridors"),
+  item(29, "Simple Guest Room", "Rooms"),
+  item(31, "Poolside Landmark View", "Facilities"),
+  item(42, "Classic Exterior Sign", "Exterior")
 ];
 
-export const galleryCategories = ["All", "Exterior", "Branding", "Hostel Posters", "Facilities", "Location", "Rooms / Accommodation"];
+export const galleryCategories = ["All", "Exterior", "Lobby", "Reception", "Rooms", "Dining", "Banquets", "Meetings", "Facilities"] as const;
