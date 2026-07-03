@@ -6,8 +6,8 @@ import { MobileBottomCTA } from "@/components/layout/MobileBottomCTA";
 import { localBusinessJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
-  "Kings Hostels",
-  "Kings Hostels is a boys hostel and student accommodation brand with two branches in Lahore: Kings Hostel 1 and Kings Hostel 2."
+  "Student Point Hostel",
+  "Student Point Hostel is a boys hostel and student accommodation option in Lahore near Gulberg III and Academy Road."
 );
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,19 +1,18 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { MapEmbed } from "@/components/ui/MapEmbed";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { branches } from "@/data/branches";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
 import { telUrl, whatsappUrl } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata(
-  "Contact Kings Hostels",
-  "Contact Kings Hostels for boys hostel inquiries, branch details, WhatsApp, call, and location information in Lahore.",
+  "Contact Student Point Hostel Lahore",
+  "Contact Student Point Hostel for boys hostel inquiries, WhatsApp, call, booking, and location information in Lahore.",
   "/contact"
 );
 
@@ -22,23 +21,20 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Contact Kings Hostels"
-        subtitle="Call, WhatsApp, or send a message for Kings Hostel 1, Kings Hostel 2, or any available branch."
-        image="/images/kings/poster-safety.jpeg"
+        title="Contact Student Point Hostel"
+        subtitle="Call, WhatsApp, or send a message for seat availability, facilities, visit timing, and location details."
+        image="/images/student-point-hostel/student-point-seats-available.jpg"
       />
       <section className="py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="grid gap-5">
             {[
-              { title: "Call Now", value: `${site.phone} / ${site.altPhone}`, href: telUrl(), icon: "Phone" },
-              { title: "WhatsApp", value: "Send a quick inquiry", href: whatsappUrl("Hello Kings Hostels, I want to contact the team."), icon: "MessageCircle" },
-              { title: "Email", value: site.email, href: `mailto:${site.email}`, icon: "CheckCircle2" }
+              { title: "Call Now", value: site.phone, href: telUrl(), icon: "Phone" },
+              { title: "WhatsApp Inquiry", value: "Send a quick seat inquiry", href: whatsappUrl("Hello Student Point Hostel, I want to contact the team."), icon: "MessageCircle" },
+              { title: "Get Directions", value: site.addressSummary, href: "/location", icon: "MapPin" },
+              { title: "Book Your Seat", value: "Submit hostel seat inquiry", href: "/booking", icon: "CalendarCheck" }
             ].map((item) => (
-              <a key={item.title} href={item.href} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
-                <Icon name={item.icon} className="h-7 w-7 text-accent" />
-                <h2 className="mt-4 text-xl font-black text-primary">{item.title}</h2>
-                <p className="mt-2 text-muted">{item.value}</p>
-              </a>
+              <ButtonCard key={item.title} {...item} />
             ))}
           </div>
           <ContactForm />
@@ -46,29 +42,34 @@ export default function ContactPage() {
       </section>
       <section className="bg-light py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Addresses" title="Both Branch Addresses" subtitle={site.headline} />
-          <div className="grid gap-5 md:grid-cols-2">
-            {branches.map((branch) => (
-              <div key={branch.id} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
-                <Icon name="MapPin" className="h-7 w-7 text-accent" />
-                <h3 className="mt-4 text-2xl font-black text-primary">{branch.name}</h3>
-                <p className="mt-3 leading-7 text-muted">{branch.address}</p>
-                <ButtonLink href={`/branches/${branch.slug}`} className="mt-6" variant="secondary">View Branch</ButtonLink>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-      <section className="py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Maps" title="Map Placeholders" subtitle="Replace these placeholders with live Google Maps embed URLs when available." />
-          <div className="grid gap-6 md:grid-cols-2">
-            {branches.map((branch) => (
-              <MapEmbed key={branch.id} title={branch.name} label={branch.address} />
-            ))}
-          </div>
+          <SectionHeading eyebrow="Address" title="Student Point Hostel Location" subtitle={site.addressSummary} />
+          <MapEmbed title="Student Point Hostel Map" label={site.addressSummary} />
         </Container>
       </section>
     </>
+  );
+}
+
+function ButtonCard({ title, value, href, icon }: { title: string; value: string; href: string; icon: string }) {
+  const content = (
+    <>
+      <Icon name={icon} className="h-7 w-7 text-accent" />
+      <h2 className="mt-4 text-xl font-black text-primary">{title}</h2>
+      <p className="mt-2 text-muted">{value}</p>
+    </>
+  );
+
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className="focus-ring rounded-lg border border-slate-200 bg-white p-6 text-left shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+      {content}
+    </a>
   );
 }

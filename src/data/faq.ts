@@ -1,42 +1,42 @@
 export const faqs = [
   {
-    question: "What is Kings Hostels?",
-    answer: "Kings Hostels is a boys hostel and student living brand in Lahore focused on comfortable, clean, secure, and practical accommodation."
+    question: "What is Student Point Hostel?",
+    answer: "Student Point Hostel is a boys hostel in Lahore focused on clean rooms, secure surroundings, student-friendly living, and practical daily facilities."
   },
   {
-    question: "Are Kings Hostel 1 and Kings Hostel 2 part of the same brand?",
-    answer: "Yes. They are two separate branch locations under one unified Kings Hostels brand."
+    question: "Is this a boys hostel?",
+    answer: "Yes. Student Point Hostel is positioned for male students, outstation students, and families looking for boys hostel accommodation."
   },
   {
-    question: "How can I select a branch?",
-    answer: "You can choose Kings Hostel 1, Kings Hostel 2, or Any Available Branch in the booking inquiry form."
+    question: "How can I book a seat?",
+    answer: "Call or WhatsApp 0325-0012727, or submit the website inquiry form to ask about current seat availability."
   },
   {
-    question: "Can I inquire for any available branch?",
-    answer: "Yes. Select Any Available Branch and the team can guide you based on availability and your location preference."
+    question: "Are rooms neat and clean?",
+    answer: "Yes. The hostel highlights neat and clean rooms as a core facility for comfortable student accommodation."
   },
   {
-    question: "Are AC rooms available?",
-    answer: "Selected AC room options may be available. Availability can vary by branch and should be confirmed when you inquire."
+    question: "Is internet available?",
+    answer: "High-speed internet service is listed as one of the key facilities for study and communication."
   },
   {
-    question: "Is Kings Hostels suitable for students?",
-    answer: "Yes. The website and branch positioning are focused on boys hostel living, student routines, peaceful study, and daily convenience."
+    question: "Is parking available?",
+    answer: "Parking garage support is listed as available, subject to current space and hostel rules."
   },
   {
-    question: "What shared facilities are available?",
-    answer: "Photos show or indicate shared facilities such as water filtration, microwave access, washing machine access, ironing support, and water heating support. Availability can vary by branch."
+    question: "Are security cameras available?",
+    answer: "Yes. Student Point Hostel lists 24-hours security cameras for a safer and more peaceful environment."
   },
   {
-    question: "How do I contact the team?",
-    answer: "Use the Call Now or WhatsApp buttons, or send a demo inquiry through the booking/contact forms."
+    question: "Is electric geyser facility available?",
+    answer: "Yes. Electric geyser facility is listed among the hostel facilities where available."
   },
   {
-    question: "Where are the branches located?",
-    answer: "Kings Hostel 1 is on Raiwind Road near University of Lahore and Green University. Kings Hostel 2 is on Shaheen Grinding Road, Dream Avenue, Lahore."
+    question: "What nearby areas are close to the hostel?",
+    answer: "Nearby areas include Cavalry Ground, Hajvery University, PAC Gulberg, 7Up Phattak, Gulberg III, and Academy Road."
   },
   {
-    question: "Can I visit before booking?",
-    answer: "Yes. Contact the team first by call or WhatsApp to confirm timing, branch location, and room availability."
+    question: "Can parents contact before booking?",
+    answer: "Yes. Parents can call or WhatsApp before booking to ask about seat availability, facilities, and location details."
   }
 ];

@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
   "Gallery",
-  "View Kings Hostels images by category: exterior, branding, rooms, corridors, facilities, appliances, Branch 1, and Branch 2.",
+  "View Student Point Hostel images by category: branding, hostel posters, facilities, location, and rooms or accommodation.",
   "/gallery"
 );
 
@@ -16,13 +16,13 @@ export default function GalleryPage() {
     <>
       <PageHero
         eyebrow="Gallery"
-        title="Kings Hostels Gallery"
-        subtitle="Browse real images from rooms, interiors, exterior areas, brand visuals, and shared facilities."
+        title="Student Point Hostel Gallery"
+        subtitle="Browse provided Student Point Hostel branding, posters, facilities, location, and accommodation visuals."
         image="/images/kings/exterior-corner.jpeg"
       />
       <section className="py-16 sm:py-20">
         <Container>
-          <SectionHeading title="Filter by Category" subtitle="Use the gallery filters to view branch images, rooms, facilities, appliances, branding, and interior spaces." />
+          <SectionHeading title="Filter by Category" subtitle="Use the gallery filters to view branding, hostel posters, facilities, location, and accommodation images." />
           <GalleryGrid />
         </Container>
       </section>

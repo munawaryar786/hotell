@@ -1,20 +1,20 @@
 export const roomTypes = [
   {
-    title: "Shared Student Rooms",
+    title: "Available Hostel Seats",
     image: "/images/kings/room-sharing.jpeg",
-    description: "Practical shared-room arrangements for students who want affordability and routine comfort.",
-    features: ["Furnished beds", "Shared living setup", "Branch-based availability"]
+    description: "Seat availability is handled by direct call or WhatsApp inquiry so students and parents can confirm current options.",
+    features: ["Contact for seat availability", "Student-focused living", "Move-in inquiry support"]
   },
   {
-    title: "Twin Sharing Rooms",
+    title: "Shared Room Options",
     image: "/images/kings/room-twin.jpeg",
-    description: "Comfortable two-bed room options shown in the Kings Hostels room photos.",
-    features: ["Two-bed layout", "Side storage", "Clean room setting"]
+    description: "Practical shared room options for boys who want an affordable and comfortable hostel routine.",
+    features: ["Shared student rooms", "Clean room setting", "Peaceful study routine"]
   },
   {
-    title: "Selected AC Rooms",
-    image: "/images/kings/poster-ac-room.jpeg",
-    description: "AC room options may be available at selected branches and should be confirmed during inquiry.",
-    features: ["AC availability by branch", "Furnished room", "Study-friendly setting"]
+    title: "Comfortable Student Rooms",
+    image: "/images/kings/room-study.jpeg",
+    description: "Rooms are positioned around daily comfort, cleanliness, security, and easy access to nearby study areas.",
+    features: ["Neat and clean rooms", "Comfortable accommodation", "Parent-friendly inquiry"]
   }
 ];

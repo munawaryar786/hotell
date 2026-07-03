@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { branches } from "@/data/branches";
 import { navItems, site } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -14,7 +13,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <span className="relative h-14 w-14 overflow-hidden rounded-full border border-white/15 bg-white">
-              <Image src={site.logo} alt="Kings Hostels logo" fill sizes="56px" className="object-cover" />
+              <Image src={site.logo} alt="Student Point Hostel logo" fill sizes="56px" className="object-cover" />
             </span>
             <div>
               <h2 className="text-2xl font-black">{site.name}</h2>
@@ -22,11 +21,11 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-5 max-w-sm leading-7 text-slate-300">
-            Boys hostel and student living in Lahore. One trusted brand. Two hostel branches in Lahore.
+            Boys hostel and student accommodation in Lahore near Gulberg III, Academy Road, Cavalry Ground, Hajvery University, PAC Gulberg, and 7Up Phattak.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <ButtonLink href="/booking">Book Now</ButtonLink>
-            <ButtonLink href={whatsappUrl("Hello Kings Hostels, I want to ask about branch availability.")} variant="light">
+            <ButtonLink href="/booking">Book Your Seat</ButtonLink>
+            <ButtonLink href={whatsappUrl("Hello Student Point Hostel, I want to inquire about seat availability.")} variant="light">
               WhatsApp
             </ButtonLink>
           </div>
@@ -47,14 +46,12 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-bold text-gold">Branches</h3>
+          <h3 className="font-bold text-gold">Location</h3>
           <div className="mt-4 grid gap-4 text-sm text-slate-300">
-            {branches.map((branch) => (
-              <Link key={branch.id} href={`/branches/${branch.slug}`} className="group rounded-md border border-white/10 p-3 transition hover:border-accent/60">
-                <span className="block font-bold text-white group-hover:text-gold">{branch.name}</span>
-                <span className="mt-1 block leading-6">{branch.mapLabel}</span>
-              </Link>
-            ))}
+            <Link href="/location" className="group rounded-md border border-white/10 p-3 transition hover:border-white/60">
+              <span className="block font-bold text-white group-hover:text-gold">Student Point Hostel</span>
+              <span className="mt-1 block leading-6">{site.addressSummary}</span>
+            </Link>
           </div>
         </div>
 
@@ -65,23 +62,19 @@ export function Footer() {
               <Icon name="Phone" className="h-4 w-4" />
               {site.phone}
             </a>
-            <a className="flex items-center gap-2 hover:text-white" href={telUrl(site.altPhone)}>
-              <Icon name="Phone" className="h-4 w-4" />
-              {site.altPhone}
-            </a>
-            <a className="flex items-center gap-2 hover:text-white" href={whatsappUrl("Hello Kings Hostels, I want to inquire.")}>
+            <a className="flex items-center gap-2 hover:text-white" href={whatsappUrl("Hello Student Point Hostel, I want to inquire.")}>
               <Icon name="MessageCircle" className="h-4 w-4" />
               WhatsApp Inquiry
             </a>
-            <a className="flex items-center gap-2 hover:text-white" href={`mailto:${site.email}`}>
-              <Icon name="CheckCircle2" className="h-4 w-4" />
-              {site.email}
-            </a>
+            <Link className="flex items-center gap-2 hover:text-white" href="/location">
+              <Icon name="MapPin" className="h-4 w-4" />
+              Get Directions
+            </Link>
           </div>
         </div>
       </Container>
       <div className="border-t border-white/10 py-5 text-center text-xs text-slate-400">
-        © 2026 Kings Hostels. Favicon recommendation: use the Kings Hostels circular logo.
+        © 2026 Student Point Hostel. Favicon recommendation: use the Student Point Hostel logo.
       </div>
     </footer>
   );

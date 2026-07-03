@@ -30,9 +30,9 @@ export function Header() {
       </div>
       <motion.div style={{ backgroundColor: bg }} className="border-b border-slate-200/90 backdrop-blur">
         <Container className="flex h-20 items-center justify-between gap-4">
-          <Link href="/" className="focus-ring flex items-center gap-3 rounded-md" aria-label="Kings Hostels home">
+          <Link href="/" className="focus-ring flex items-center gap-3 rounded-md" aria-label="Student Point Hostel home">
             <span className="relative h-12 w-12 overflow-hidden rounded-full border border-slate-200 bg-primary shadow-soft">
-              <Image src={site.logo} alt="Kings Hostels logo" fill sizes="48px" className="object-cover" priority />
+              <Image src={site.logo} alt="Student Point Hostel logo" fill sizes="48px" className="object-cover" priority />
             </span>
             <span>
               <span className="block text-lg font-black leading-none text-primary">{site.name}</span>
@@ -49,13 +49,13 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <ButtonLink href={whatsappUrl("Hello Kings Hostels, I want to inquire about room availability.")} variant="outline">
+            <ButtonLink href={whatsappUrl("Hello Student Point Hostel, I want to inquire about seat availability.")} variant="outline">
               <Icon name="MessageCircle" className="h-4 w-4" />
               WhatsApp
             </ButtonLink>
             <ButtonLink href="/booking">
               <Icon name="CalendarCheck" className="h-4 w-4" />
-              Book Now
+              Book Your Seat
             </ButtonLink>
           </div>
 
@@ -97,7 +97,7 @@ export function Header() {
                   Call
                 </ButtonLink>
                 <ButtonLink href="/booking" onClick={() => setOpen(false)}>
-                  Book
+                  Book Seat
                 </ButtonLink>
               </div>
             </Container>

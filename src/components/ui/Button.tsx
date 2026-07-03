@@ -8,11 +8,11 @@ export function buttonClasses(variant: Variant = "primary", className?: string) 
   const base =
     "focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-bold transition duration-200 hover:-translate-y-0.5 active:translate-y-0";
   const variants: Record<Variant, string> = {
-    primary: "bg-accent text-white shadow-red hover:bg-[#c91627] hover:shadow-xl",
+    primary: "bg-accent text-white shadow-red hover:bg-secondary hover:shadow-xl",
     secondary: "bg-primary text-white shadow-lg shadow-black/15 hover:bg-secondary hover:shadow-xl",
     outline: "border border-slate-300 bg-white text-primary hover:border-accent hover:text-accent hover:shadow-md",
     light: "bg-white text-primary shadow-lg shadow-black/10 hover:shadow-xl",
-    gold: "bg-gold text-primary shadow-lg shadow-gold/25 hover:bg-[#dca100] hover:shadow-xl"
+    gold: "bg-gold text-primary shadow-lg shadow-primary/10 hover:bg-white hover:shadow-xl"
   };
   return cn(base, variants[variant], className);
 }

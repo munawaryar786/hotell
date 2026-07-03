@@ -1,26 +1,22 @@
 export const amenities = [
-  { title: "Comfortable Rooms", icon: "BedDouble", image: "/images/kings/room-twin.jpeg", note: "Furnished rooms designed for daily student living." },
-  { title: "AC Room Options", icon: "Snowflake", image: "/images/kings/poster-ac-room.jpeg", note: "Selected branches may offer AC rooms. Confirm availability before booking." },
-  { title: "Secure & Peaceful Living", icon: "ShieldCheck", image: "/images/kings/poster-safety.jpeg", note: "Security-oriented environment with CCTV-focused monitoring areas." },
-  { title: "Cleanliness You Can Trust", icon: "Sparkles", image: "/images/kings/corridor.jpeg", note: "Organized interiors and practical cleaning expectations." },
-  { title: "Microwave Access", icon: "CookingPot", image: "/images/kings/microwave.jpeg", note: "Shared microwave access may be available for quick meals." },
-  { title: "Water Filtration", icon: "Droplets", image: "/images/kings/water-filter.jpeg", note: "Drinking water filtration support is shown in the facility photos." },
-  { title: "Laundry Support", icon: "WashingMachine", image: "/images/kings/washing-machine.jpeg", note: "Washing machine access may vary by branch." },
-  { title: "Ironing Support", icon: "Shirt", image: "/images/kings/iron.jpeg", note: "Ironing area and iron support are represented in the facility images." },
-  { title: "Water Heating", icon: "Flame", image: "/images/kings/geyser.jpeg", note: "Geyser or water heating support may be available at selected areas." },
-  { title: "Study-Friendly Atmosphere", icon: "BookOpen", image: "/images/kings/room-study.jpeg", note: "Peaceful rooms and corridors support a focused routine." }
+  { title: "24-Hours Security Cameras", icon: "ShieldCheck", image: "/images/kings/exterior-corner.jpeg", note: "Security camera support for a safer and more peaceful hostel environment." },
+  { title: "Neat & Clean Rooms", icon: "Sparkles", image: "/images/kings/corridor.jpeg", note: "Clean and organized rooms designed for comfortable student accommodation." },
+  { title: "High-Speed Internet", icon: "Wifi", image: "/images/kings/room-study.jpeg", note: "Internet service available to help students stay connected for study and communication." },
+  { title: "Parking Garage", icon: "Car", image: "/images/kings/entrance.jpeg", note: "Parking support is available for bikes and vehicles, subject to available space." },
+  { title: "Electric Geyser Facility", icon: "Flame", image: "/images/kings/geyser.jpeg", note: "Hot water support through electric geyser facility where available." },
+  { title: "Study-Friendly Living", icon: "BookOpen", image: "/images/kings/room-study.jpeg", note: "A relaxed and focused environment suitable for study, rest, and daily student life." },
+  { title: "Nearby Key Locations", icon: "MapPin", image: "/images/kings/exterior-wide.jpeg", note: "Located near Gulberg III, Academy Road, Cavalry Ground, Hajvery University, PAC Gulberg, and 7Up Phattak." },
+  { title: "Easy Booking Inquiry", icon: "MessageCircle", image: "/images/student-point-hostel/student-point-logo.jpg", note: "Students and parents can contact directly through call or WhatsApp for seat availability." }
 ];
 
 export const whyChoose = [
-  "Two Convenient Lahore Branches",
+  "Secure Environment",
   "Student-Friendly Environment",
-  "Comfortable Rooms",
-  "Secure & Peaceful Living",
-  "Cleanliness You Can Trust",
-  "AC Room Options",
-  "Essential Shared Facilities",
-  "Near Universities & Main Roads",
-  "Practical Daily-Living Support",
+  "Neat & Clean Rooms",
+  "High-Speed Internet",
+  "Parking Garage",
+  "Electric Geyser Facility",
+  "Nearby Key Locations",
   "Easy Booking Inquiry"
 ];
 
@@ -28,16 +24,16 @@ export const testimonials = [
   {
     name: "Student Living Experience",
     role: "Review-style highlight",
-    quote: "The room setup, clean corridors, and branch options make Kings Hostels feel suitable for a focused student routine."
+    quote: "The clean-room focus, internet service, and peaceful environment make Student Point Hostel suitable for a focused student routine."
   },
   {
     name: "Parent Confidence",
     role: "Review-style highlight",
-    quote: "Clear branch information, contact options, and security-focused visuals help families understand the living environment before visiting."
+    quote: "Clear contact details, security camera support, and location information help families understand the living environment before visiting."
   },
   {
     name: "Daily Convenience",
     role: "Review-style highlight",
-    quote: "Facilities like filtered water, microwave access, washing support, and ironing support are practical for everyday hostel life."
+    quote: "Facilities like high-speed internet, parking support, electric geyser access, and nearby areas are practical for everyday hostel life."
   }
 ];

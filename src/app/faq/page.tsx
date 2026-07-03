@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
   "FAQ",
-  "Frequently asked questions about Kings Hostels, Kings Hostel 1, Kings Hostel 2, AC rooms, facilities, and booking inquiries.",
+  "Frequently asked questions about Student Point Hostel, boys hostel accommodation, seat booking, rooms, internet, parking, security cameras, and nearby areas.",
   "/faq"
 );
 
@@ -18,8 +18,8 @@ export default function FAQPage() {
       <PageHero
         eyebrow="FAQ"
         title="Frequently Asked Questions"
-        subtitle="Answers about the Kings Hostels brand, both branches, room inquiries, shared facilities, and visiting before booking."
-        image="/images/kings/poster-facilities.jpeg"
+        subtitle="Answers about Student Point Hostel, boys hostel living, seat inquiries, facilities, nearby places, and parent contact before booking."
+        image="/images/kings/interior-entry.jpeg"
       />
       <section className="py-16 sm:py-20">
         <Container>
@@ -33,7 +33,7 @@ export default function FAQPage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <ButtonLink href="/booking">Send Booking Inquiry</ButtonLink>
+            <ButtonLink href="/booking">Send Seat Inquiry</ButtonLink>
           </div>
         </Container>
       </section>

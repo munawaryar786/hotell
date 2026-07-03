@@ -8,7 +8,7 @@ export function PageHero({
   eyebrow,
   title,
   subtitle,
-  image = "/images/kings/exterior-corner.jpeg",
+  image = "/images/student-point-hostel/student-point-poster-main.jpg",
   ctaHref,
   ctaLabel
 }: {

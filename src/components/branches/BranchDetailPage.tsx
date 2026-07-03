@@ -18,8 +18,8 @@ type Props = { params: { slug?: string } };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = params.slug ?? "";
   const branch = getBranch(slug);
-  if (!branch) return pageMetadata("Kings Hostels Branch", "Kings Hostels branch details.");
-  return pageMetadata(branch.name, `${branch.name} details, address, rooms, facilities, and booking inquiry.`, `/branches/${branch.slug}`);
+  if (!branch) return pageMetadata("Student Point Hostel", "Student Point Hostel details.");
+  return pageMetadata(branch.name, `${branch.name} details, address, accommodation, facilities, and seat inquiry.`, `/branches/${branch.slug}`);
 }
 
 export function generateStaticParams() {
@@ -34,7 +34,7 @@ export default function BranchDetailPage({ params }: Props) {
 
   return (
     <>
-      <PageHero eyebrow={branch.shortName} title={branch.title} subtitle={branch.description} image={branch.image} ctaHref="/booking" ctaLabel="Inquire for This Branch" />
+      <PageHero eyebrow={branch.shortName} title={branch.title} subtitle={branch.description} image={branch.image} ctaHref="/booking" ctaLabel="Inquire for Seats" />
       <section className="py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
@@ -49,8 +49,8 @@ export default function BranchDetailPage({ params }: Props) {
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/booking">Book This Branch</ButtonLink>
-              <ButtonLink href={whatsappUrl(`Hello Kings Hostels, I want to inquire about ${branch.name}.`)} variant="outline">
+              <ButtonLink href="/booking">Book Your Seat</ButtonLink>
+              <ButtonLink href={whatsappUrl(`Hello Student Point Hostel, I want to inquire about ${branch.name}.`)} variant="outline">
                 WhatsApp CTA
               </ButtonLink>
             </div>
@@ -60,7 +60,7 @@ export default function BranchDetailPage({ params }: Props) {
       </section>
       <section className="bg-light py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Branch Gallery" title={`${branch.name} Images`} subtitle="Selected real Kings Hostels photos and branch visuals." />
+          <SectionHeading eyebrow="Gallery" title={`${branch.name} Images`} subtitle="Selected Student Point Hostel brand, facility, and accommodation visuals." />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {branch.gallery.map((image) => (
               <div key={image} className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-soft">
@@ -72,7 +72,7 @@ export default function BranchDetailPage({ params }: Props) {
       </section>
       <section className="py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Rooms & Facilities" title="Branch Room Preview" subtitle="Availability can vary by branch and should be confirmed through inquiry." />
+          <SectionHeading eyebrow="Accommodation & Facilities" title="Hostel Accommodation Preview" subtitle="Availability should be confirmed through direct seat inquiry." />
           <div className="grid gap-5 md:grid-cols-3">
             {roomTypes.map((room) => (
               <div key={room.title} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
@@ -98,7 +98,7 @@ export default function BranchDetailPage({ params }: Props) {
       <section className="bg-light py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <SectionHeading centered={false} eyebrow="Related Branch" title={related ? `Also View ${related.name}` : "Explore Branches"} subtitle="Both locations belong to the same Kings Hostels brand." />
+            <SectionHeading centered={false} eyebrow="Seat Inquiry" title="Confirm Current Seat Availability" subtitle="Students and parents can contact directly through call or WhatsApp." />
             {related ? (
               <ButtonLink href={`/branches/${related.slug}`} variant="secondary">
                 View {related.name}

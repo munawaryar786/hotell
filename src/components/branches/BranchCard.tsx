@@ -24,7 +24,7 @@ export function BranchCard({ branch }: { branch: Branch }) {
           ))}
         </div>
         <ButtonLink href={`/branches/${branch.slug}`} variant="secondary" className="mt-6">
-          View Branch
+          View Location
         </ButtonLink>
       </div>
     </article>

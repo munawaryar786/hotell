@@ -16,17 +16,18 @@ export function ContactForm() {
     <form onSubmit={submit} className="rounded-lg border border-slate-200 bg-white p-6 shadow-soft">
       <h2 className="text-2xl font-black text-primary">Send a Message</h2>
       <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <Field label="Full name" name="name" />
-        <Field label="Phone number" name="phone" type="tel" />
-        <Field label="Email optional" name="email" type="email" />
+        <Field label="Full Name" name="name" />
+        <Field label="Phone Number" name="phone" type="tel" />
+        <Field label="WhatsApp Number optional" name="whatsapp" type="tel" required={false} />
         <div>
-          <label className="text-sm font-bold text-primary" htmlFor="branch">
-            Branch
+          <label className="text-sm font-bold text-primary" htmlFor="inquiryType">
+            Inquiry Type
           </label>
-          <select id="branch" name="branch" className="focus-ring mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm">
-            <option>Kings Hostel 1</option>
-            <option>Kings Hostel 2</option>
-            <option>Any Available Branch</option>
+          <select id="inquiryType" name="inquiryType" className="focus-ring mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm">
+            <option>Seat Availability</option>
+            <option>Facilities</option>
+            <option>Location Visit</option>
+            <option>Parent Inquiry</option>
           </select>
         </div>
         <div className="md:col-span-2">
@@ -44,13 +45,13 @@ export function ContactForm() {
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Field({ label, name, type = "text", required = true }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
       <label className="text-sm font-bold text-primary" htmlFor={name}>
         {label}
       </label>
-      <input id={name} name={name} type={type} required={name !== "email"} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
+      <input id={name} name={name} type={type} required={required} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
     </div>
   );
 }

@@ -4,8 +4,8 @@ import { Icon } from "@/components/ui/Icon";
 
 const rows = [
   { label: "Address", value: (index: number) => branches[index].address },
-  { label: "Room availability", value: () => "Shared and furnished room options by inquiry" },
-  { label: "AC room availability", value: () => "Selected AC options may be available" },
+  { label: "Seat availability", value: () => "Shared and comfortable room options by inquiry" },
+  { label: "Geyser facility", value: () => "Electric geyser facility where available" },
   { label: "Shared amenities", value: (index: number) => branches[index].amenities.slice(0, 5).join(", ") },
   { label: "Best for", value: (index: number) => branches[index].bestFor },
   { label: "Nearby landmarks", value: (index: number) => branches[index].nearby }

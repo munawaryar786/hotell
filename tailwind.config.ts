@@ -5,17 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#0B0B0B",
-        secondary: "#171717",
-        accent: "#E11D2E",
-        gold: "#F4B400",
-        light: "#F8FAFC",
+        primary: "#0B4EA2",
+        secondary: "#083B7A",
+        accent: "#0B4EA2",
+        gold: "#EAF3FF",
+        light: "#EAF3FF",
         muted: "#4B5563"
       },
       boxShadow: {
-        soft: "0 16px 48px rgba(11, 11, 11, 0.08)",
-        lift: "0 24px 70px rgba(11, 11, 11, 0.16)",
-        red: "0 18px 45px rgba(225, 29, 46, 0.22)"
+        soft: "0 16px 48px rgba(11, 78, 162, 0.08)",
+        lift: "0 24px 70px rgba(8, 59, 122, 0.16)",
+        red: "0 18px 45px rgba(11, 78, 162, 0.22)"
       }
     }
   },

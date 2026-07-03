@@ -29,7 +29,7 @@ export function localBusinessJsonLd() {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     name: site.name,
-    description: "Boys hostel and student accommodation brand with two branches in Lahore.",
+    description: "Boys hostel and student accommodation in Lahore near Gulberg III and Academy Road.",
     url: site.url,
     telephone: site.phone,
     image: `${site.url}${site.heroImage}`,
@@ -51,13 +51,12 @@ export function localBusinessJsonLd() {
       image: `${site.url}${branch.image}`
     })),
     amenityFeature: [
-      "Furnished rooms",
-      "Selected AC rooms",
-      "Water filtration",
-      "Microwave access",
-      "Laundry support",
-      "Ironing support",
-      "CCTV surveillance"
+      "24-hours security cameras",
+      "Neat and clean rooms",
+      "High-speed internet",
+      "Parking garage",
+      "Electric geyser facility",
+      "Study-friendly environment"
     ].map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true }))
   };
 }

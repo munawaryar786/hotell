@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { branches } from "@/data/branches";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
@@ -17,8 +16,8 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
     const data = new FormData(form);
     const nextErrors: Errors = {};
     const required = compact
-      ? ["fullName", "phone", "branch", "roomPreference"]
-      : ["fullName", "phone", "branch", "roomPreference", "moveIn", "message"];
+      ? ["fullName", "phone", "moveIn", "roomPreference", "residentType"]
+      : ["fullName", "phone", "moveIn", "roomPreference", "residentType", "message"];
 
     required.forEach((field) => {
       if (!String(data.get(field) || "").trim()) nextErrors[field] = "This field is required.";
@@ -42,44 +41,38 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
           <Icon name="CalendarCheck" className="h-5 w-5" />
         </span>
         <div>
-          <h2 className="text-xl font-black text-primary">{compact ? "Quick Booking Inquiry" : "Hostel Booking Inquiry"}</h2>
-          <p className="text-sm text-muted">Demo form only. The team can contact you after submission.</p>
+          <h2 className="text-xl font-black text-primary">{compact ? "Quick Seat Inquiry" : "Book Your Seat at Student Point Hostel"}</h2>
+          <p className="text-sm text-muted">Submit a hostel seat inquiry and the team can contact you soon.</p>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Full name" name="fullName" error={errors.fullName} />
-        <Field label="Phone number" name="phone" type="tel" error={errors.phone} />
-        {!compact ? <Field label="Email optional" name="email" type="email" /> : null}
-        <Select label="Preferred branch" name="branch" error={errors.branch}>
-          <option value="">Select branch</option>
-          {branches.map((branch) => (
-            <option key={branch.id}>{branch.name}</option>
-          ))}
-          <option>Any Available Branch</option>
-        </Select>
-        <Select label="Room preference" name="roomPreference" error={errors.roomPreference}>
+        <Field label="Full Name" name="fullName" error={errors.fullName} />
+        <Field label="Phone Number" name="phone" type="tel" error={errors.phone} />
+        {!compact ? <Field label="WhatsApp Number optional" name="whatsapp" type="tel" /> : null}
+        <Field label="Move-in Date" name="moveIn" type="date" error={errors.moveIn} />
+        <Select label="Room Preference" name="roomPreference" error={errors.roomPreference}>
           <option value="">Select preference</option>
+          <option>Available Hostel Seats</option>
           <option>Shared Room</option>
-          <option>Twin Sharing</option>
-          <option>AC Room Option</option>
-          <option>Any Available Room</option>
+          <option>Comfortable Student Room</option>
+          <option>Any Available Option</option>
         </Select>
-        <Field label="Move-in date" name="moveIn" type="date" error={errors.moveIn} />
+        <Select label={compact ? "Student / Professional" : "Student / Working Professional"} name="residentType" error={errors.residentType}>
+          <option value="">Select type</option>
+          <option>Student</option>
+          <option>Working Professional</option>
+          <option>Parent / Guardian Inquiring</option>
+        </Select>
         {!compact ? (
           <>
+            <Field label="Nearby Institute / University optional" name="institute" />
             <Select label="Duration of stay optional" name="duration">
               <option value="">Select duration</option>
               <option>1 month</option>
               <option>3 months</option>
               <option>6 months</option>
               <option>Long term</option>
-            </Select>
-            <Select label="I am optional" name="residentType">
-              <option value="">Select type</option>
-              <option>Student</option>
-              <option>Working professional</option>
-              <option>Parent / guardian inquiring</option>
             </Select>
           </>
         ) : null}
@@ -92,14 +85,14 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
             name="message"
             rows={compact ? 3 : 5}
             className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm"
-            placeholder="Tell us your preferred branch, room type, and move-in needs."
+            placeholder="Tell us your room preference, move-in needs, and any nearby institute."
           />
           {errors.message ? <p className="mt-1 text-xs font-semibold text-accent">{errors.message}</p> : null}
         </div>
         {!compact ? (
           <label className="flex gap-3 text-sm text-muted md:col-span-2">
             <input name="consent" type="checkbox" className="mt-1 h-4 w-4 accent-accent" />
-            I agree to be contacted by Kings Hostels about this inquiry.
+            I agree to be contacted by Student Point Hostel about this inquiry.
           </label>
         ) : null}
         {errors.consent ? <p className="text-xs font-semibold text-accent md:col-span-2">{errors.consent}</p> : null}
@@ -107,13 +100,11 @@ export function BookingForm({ compact = false }: { compact?: boolean }) {
 
       {success ? (
         <div className="mt-5 rounded-md border border-green-200 bg-green-50 p-4 text-sm font-semibold text-green-700">
-          {compact
-            ? "Thank you! Your inquiry has been received. Our team will contact you soon."
-            : "Thank you! Your hostel inquiry has been received. Our team will contact you shortly."}
+          Thank you! Your hostel seat inquiry has been received. Our team will contact you soon.
         </div>
       ) : null}
       <Button type="submit" className="mt-6 w-full md:w-auto">
-        Submit inquiry
+        Submit Inquiry
       </Button>
     </form>
   );

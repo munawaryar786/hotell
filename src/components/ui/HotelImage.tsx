@@ -28,7 +28,7 @@ export function HotelImage({
         role="img"
         aria-label={alt}
         className={cn(
-          "flex h-full min-h-[220px] w-full items-center justify-center bg-[linear-gradient(135deg,#0B0B0B,#E11D2E_58%,#F4B400)] text-white",
+          "flex h-full min-h-[220px] w-full items-center justify-center bg-[linear-gradient(135deg,#083B7A,#0B4EA2_58%,#EAF3FF)] text-white",
           className
         )}
       >

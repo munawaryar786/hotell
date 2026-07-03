@@ -11,7 +11,7 @@ export function MobileBottomCTA() {
           Call
         </a>
         <a
-          href={whatsappUrl("Hello Kings Hostels, I want to inquire about rooms.")}
+          href={whatsappUrl("Hello Student Point Hostel, I want to inquire about seat availability.")}
           className="focus-ring flex min-h-12 flex-col items-center justify-center rounded-md bg-[#128C7E] text-xs font-bold text-white"
         >
           <Icon name="MessageCircle" className="mb-1 h-4 w-4" />
@@ -19,7 +19,7 @@ export function MobileBottomCTA() {
         </a>
         <Link href="/booking" className="focus-ring flex min-h-12 flex-col items-center justify-center rounded-md bg-accent text-xs font-bold text-white">
           <Icon name="CalendarCheck" className="mb-1 h-4 w-4" />
-          Book
+          Book Seat
         </Link>
       </div>
     </div>
