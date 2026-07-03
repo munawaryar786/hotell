@@ -5,6 +5,8 @@ import {
   Building2,
   CalendarCheck,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Car,
   CheckCircle2,
   Clock,
@@ -48,6 +50,8 @@ const icons: Record<string, LucideIcon> = {
   Building2,
   CalendarCheck,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Car,
   CheckCircle2,
   Clock,
@@ -87,3 +91,4 @@ export function Icon({ name, className, "aria-hidden": ariaHidden = true }: { na
   const Component = icons[name] ?? CheckCircle2;
   return <Component aria-hidden={ariaHidden} className={className} />;
 }
+

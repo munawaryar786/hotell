@@ -32,7 +32,7 @@ export const faqs = [
   {
     category: "Contact",
     question: "How do I contact reservations?",
-    answer: "Use the phone, WhatsApp, or contact form placeholders in this demo. Final contact details should be replaced with verified hotel information."
+    answer: "Use the contact form for reservation and event inquiries. Direct phone, WhatsApp, and email details can be added once confirmed by the hotel."
   },
   {
     category: "Location",
@@ -40,3 +40,4 @@ export const faqs = [
     answer: "This demo positions the hotel in central Lahore. The exact public address and map link should be verified before publishing."
   }
 ];
+

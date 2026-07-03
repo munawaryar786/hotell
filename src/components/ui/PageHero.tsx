@@ -20,7 +20,7 @@ export function PageHero({
   ctaLabel?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-primary py-20 text-white sm:py-24">
+    <section className="relative overflow-hidden bg-primary pb-20 pt-32 text-white sm:pb-24 sm:pt-36">
       <div className="absolute inset-0 opacity-50">
         <HotelImage src={image} alt={title} priority sizes="100vw" />
       </div>
@@ -32,7 +32,7 @@ export function PageHero({
           </span>
           <span className="text-xs font-black uppercase tracking-[0.16em] text-gold">{eyebrow}</span>
         </div>
-        <h1 className="mt-6 max-w-4xl text-4xl font-black tracking-normal sm:text-5xl">{title}</h1>
+        <h1 className="mt-6 max-w-4xl font-display text-4xl font-semibold tracking-normal sm:text-6xl">{title}</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-200">{subtitle}</p>
         {ctaHref && ctaLabel ? (
           <ButtonLink href={ctaHref} className="mt-8" variant="gold">
@@ -43,3 +43,4 @@ export function PageHero({
     </section>
   );
 }
+

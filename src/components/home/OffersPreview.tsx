@@ -1,23 +1,22 @@
 import { offers } from "@/data/offers";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function OffersPreview() {
   return (
     <Container>
-      <SectionHeading eyebrow="Offers" title="Packages and Direct Booking Concepts" subtitle="All packages use Contact for Current Offers / Contact for Current Rates until verified by the hotel." />
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-        {offers.map((offer) => (
-          <article key={offer.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-soft transition hover:-translate-y-1 hover:border-accent/70">
-            <span className="rounded-full bg-light px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-primary">{offer.tag}</span>
-            <h3 className="mt-4 font-black text-primary">{offer.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-muted">{offer.description}</p>
-            <p className="mt-4 text-sm font-black text-primary">Contact for Current Offers</p>
-          </article>
-        ))}
+      <div className="relative overflow-hidden rounded-lg bg-black p-8 text-white shadow-lift md:p-12">
+        <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[url('/images/ambassador/ambassador-36.jpg')] bg-cover bg-center opacity-35 lg:block" />
+        <div className="relative max-w-3xl">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">Exclusive Offers</p>
+          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">Exclusive Offers</h2>
+          <p className="mt-5 text-lg leading-8 text-white/70">Contact Hotel Ambassador Lahore for current room, dining, family stay, business stay, and event packages.</p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {offers.slice(0, 5).map((offer) => <div key={offer.title} className="rounded-lg border border-white/10 bg-white/5 p-4"><h3 className="font-display text-xl font-semibold">{offer.title}</h3><p className="mt-2 text-xs font-black uppercase tracking-[0.14em] text-gold">Contact for current rates</p></div>)}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3"><ButtonLink href="/offers" variant="gold">View Current Offers</ButtonLink><ButtonLink href="/contact" variant="light">Contact Reservations</ButtonLink></div>
+        </div>
       </div>
-      <div className="mt-8 text-center"><ButtonLink href="/offers" variant="outline">View Packages</ButtonLink></div>
     </Container>
   );
 }

@@ -21,7 +21,7 @@ export function ContactForm({ subject = "General Inquiry" }: { subject?: string 
         <Field label="Subject" name="subject" defaultValue={subject} />
         <div className="md:col-span-2">
           <label htmlFor="message" className="text-sm font-bold text-primary">Message</label>
-          <textarea id="message" name="message" required rows={5} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" placeholder="Tell us how the reservation or event team can help." />
+          <textarea id="message" name="message" required rows={5} className="focus-ring mt-2 w-full rounded-md border border-slate-300 px-4 py-3 text-sm" />
         </div>
       </div>
       {sent ? <p className="mt-5 rounded-md border border-green-200 bg-green-50 p-4 text-sm font-semibold text-green-700">Thank you! Your inquiry has been received.</p> : null}
@@ -38,3 +38,4 @@ function Field({ label, name, type = "text", defaultValue }: { label: string; na
     </div>
   );
 }
+
