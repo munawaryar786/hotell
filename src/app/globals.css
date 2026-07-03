@@ -19,7 +19,7 @@ body {
   background: #faf7f0;
   color: #111827;
   font-family: Arial, Helvetica, sans-serif;
-  padding-bottom: 64px;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 1024px) {
@@ -112,3 +112,4 @@ h3,
     transition-duration: 0.01ms !important;
   }
 }
+
