@@ -11,7 +11,7 @@ export function RoomsPreview() {
       <SectionHeading eyebrow="Accommodation" title="Accommodation" subtitle="Choose from comfortable room categories designed for business travelers, families, and city guests." />
       <LuxuryCarousel>
         {rooms.map((room) => (
-          <article key={room.slug} className="group h-full overflow-hidden rounded-lg bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+          <article key={room.slug} className="group flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
             <div className="relative aspect-[4/5] overflow-hidden">
               <HotelImage src={room.image} alt={`${room.title} at Hotel Ambassador Lahore`} sizes="(min-width: 1024px) 34vw, 86vw" className="transition duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
@@ -33,3 +33,4 @@ export function RoomsPreview() {
     </Container>
   );
 }
+

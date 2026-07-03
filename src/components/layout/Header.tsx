@@ -29,7 +29,7 @@ export function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-50">
         <motion.div style={{ backgroundColor: bg, borderColor: border }} className="border-b backdrop-blur-xl">
-          <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 lg:h-20 lg:gap-6">
+          <Container className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 lg:h-20 lg:gap-6 xl:grid-cols-[1fr_auto_1fr]">
             <div className="flex min-w-0 items-center gap-4">
               <button
                 type="button"
@@ -40,7 +40,7 @@ export function Header() {
               >
                 <Icon name="Menu" className="h-5 w-5" />
               </button>
-              <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary navigation">
+              <nav className="hidden min-w-0 items-center gap-4 xl:flex" aria-label="Primary navigation">
                 {navItems.slice(0, 4).map((item) => (
                   <Link key={item.href} href={item.href} className="nav-link text-xs font-bold uppercase tracking-[0.12em] text-white/90 transition hover:text-gold">
                     {item.label}
@@ -49,7 +49,7 @@ export function Header() {
               </nav>
             </div>
 
-            <Link href="/" className="focus-ring mx-auto flex min-w-0 max-w-[12rem] items-center justify-center gap-2 rounded-md text-center sm:max-w-none lg:gap-3" aria-label="Hotel Ambassador Lahore home">
+            <Link href="/" className="focus-ring mx-auto flex min-w-0 max-w-[12rem] shrink-0 items-center justify-center gap-2 rounded-md text-center sm:max-w-none lg:gap-3 xl:px-4" aria-label="Hotel Ambassador Lahore home">
               <span className="relative hidden h-11 w-11 shrink-0 overflow-hidden rounded-full bg-white p-1 sm:block">
                 <Image src={site.logo} alt="Hotel Ambassador Lahore logo" fill sizes="44px" className="object-contain" priority />
               </span>
@@ -63,7 +63,7 @@ export function Header() {
             </Link>
 
             <div className="flex min-w-0 items-center justify-end gap-4">
-              <nav className="hidden items-center gap-5 xl:flex" aria-label="Secondary navigation">
+              <nav className="hidden min-w-0 items-center gap-4 xl:flex" aria-label="Secondary navigation">
                 {navItems.slice(4).map((item) => (
                   <Link key={item.href} href={item.href} className="nav-link text-xs font-bold uppercase tracking-[0.12em] text-white/90 transition hover:text-gold">
                     {item.label}
@@ -88,10 +88,10 @@ export function Header() {
             animate={reduceMotion ? undefined : { opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="fixed inset-0 z-[9999] bg-black/92 text-white backdrop-blur-md"
+            className="fixed inset-0 z-[9999] h-[100dvh] overflow-y-auto overscroll-contain bg-black/92 pb-10 text-white backdrop-blur-md"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/72 via-black/92 to-black" />
-            <Container className="relative flex min-h-screen flex-col py-5">
+            <Container className="relative flex min-h-[100dvh] flex-col py-5 pb-10">
               <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b border-white/10 pb-5">
                 <button
                   type="button"
@@ -110,7 +110,7 @@ export function Header() {
                 </ButtonLink>
               </div>
 
-              <nav className="grid flex-1 content-center gap-3 py-8 sm:grid-cols-2 lg:grid-cols-4" aria-label="Expanded navigation">
+              <nav className="grid flex-none gap-3 py-6 sm:grid-cols-2 lg:grid-cols-4" aria-label="Expanded navigation">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
@@ -123,7 +123,7 @@ export function Header() {
                 ))}
               </nav>
 
-              <div className="border-t border-white/10 pt-5">
+              <div className="mt-auto border-t border-white/10 pt-5">
                 <ButtonLink href="/booking" variant="gold" onClick={() => setOpen(false)} className="h-14 w-full rounded-xl text-sm uppercase tracking-[0.1em]">
                   Book Your Stay
                 </ButtonLink>
@@ -135,3 +135,4 @@ export function Header() {
     </>
   );
 }
+

@@ -16,7 +16,7 @@ export function FacilitiesPreview() {
       <SectionHeading eyebrow="Featured Amenities" title="Featured Amenities" subtitle="A premium preview of guest facilities and hotel services. Availability can be confirmed directly with the hotel." />
       <LuxuryCarousel>
         {items.map((facility, index) => (
-          <article key={facility.title} className="group overflow-hidden rounded-lg bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+          <article key={facility.title} className="group flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
             <div className="relative aspect-[4/3] overflow-hidden">
               <HotelImage src={media.amenityImages[index % media.amenityImages.length]} alt={`${facility.title} at Hotel Ambassador Lahore`} className="transition duration-700 group-hover:scale-105" />
             </div>
@@ -32,3 +32,4 @@ export function FacilitiesPreview() {
     </Container>
   );
 }
+

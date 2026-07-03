@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 export function LuxuryCarousel({ children, className }: { children: ReactNode[]; className?: string }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false, dragFree: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", containScroll: "trimSnaps", loop: false, dragFree: false });
   const [selected, setSelected] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
@@ -28,12 +28,12 @@ export function LuxuryCarousel({ children, className }: { children: ReactNode[];
   }, [emblaApi]);
 
   return (
-    <div className={cn("relative", className)}>
-      <div className="overflow-hidden" ref={emblaRef}>
+    <div className={cn("relative w-full max-w-full overflow-hidden", className)}>
+      <div className="w-full max-w-full overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-4">
           {children.map((child, index) => (
-            <div key={index} className="min-w-0 flex-[0_0_86%] pl-4 sm:flex-[0_0_58%] lg:flex-[0_0_34%]">
-              {child}
+            <div key={index} className="min-w-0 max-w-full flex-[0_0_100%] pl-4 sm:flex-[0_0_50%] lg:flex-[0_0_33.333333%]">
+              <div className="h-full w-full max-w-full overflow-hidden">{child}</div>
             </div>
           ))}
         </div>
@@ -50,7 +50,7 @@ export function LuxuryCarousel({ children, className }: { children: ReactNode[];
             />
           ))}
         </div>
-        <div className="flex gap-2">
+        <div className="flex shrink-0 gap-2">
           <button type="button" onClick={scrollPrev} aria-label="Previous slide" className="focus-ring flex h-11 w-11 items-center justify-center rounded-full border border-black/15 bg-white text-primary transition hover:border-gold hover:text-gold">
             <Icon name="ChevronLeft" className="h-5 w-5" />
           </button>
